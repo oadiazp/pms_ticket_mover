@@ -1,0 +1,29 @@
+name: 'PMS ticket mover'
+description: 'Moves tickets on the PMS based on some interactions with the VCS'
+inputs:
+#   who-to-greet:  # id of input
+#     description: 'Who to greet'
+#     required: true
+#     default: 'World'
+    pms:
+        description: Select the PMS you want to interact with
+        required: true
+        default: 'jira'
+    project:
+        description: Meta groping element for the managed tickets
+        required: true
+    desired_status:
+        description: Status where you want to put the ticket
+        required: true
+    trello_token:
+        description: Trello authenticated token
+        required: false
+    trello_app_key:
+        description: Trello app key
+        required: false
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'node12'
+  main: 'index.js'
