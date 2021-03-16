@@ -8,6 +8,8 @@ class TrelloPMS {
     {
         const key = this.core.getInput('trello_app_key');
         const token = this.core.getInput('trello_token');
+        const url = `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`;
+        console.log(`Ticket URL: ${url}`);
         
         axios.put(
             `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`, {
