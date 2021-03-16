@@ -13,9 +13,9 @@ class TrelloPMS {
 
         axios.put(
             `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`, {
-            data: {
+            data: JSON.stringify({
                 idList: desiredStatus
-            }
+            })
         }).
         then((response) => {
             console.log(response);
