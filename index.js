@@ -18,15 +18,10 @@ class TrelloPMS {
             }
         }).
         then((response) => {
-            const s = JSON.stringify(response);
-            console.log(
-                `Response: ${s}`
-            );
+            console.log(response);
         }).
         catch((error) => {
-            const errorStr = JSON.stringify(error);
             console.log(error);
-            console.log(`Error: ${error}`);
         });
     }
 }
