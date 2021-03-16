@@ -43,7 +43,7 @@ const { default: axios } = require('axios');
 try {
     const psmManager = PMSFactory.factory(core);
 
-    console.log(github.context);
+    console.log(github.context.payload);
 
     const ticketId = TicketFinder.get(github.context.payload.head_commit.message);
     psmManager.moveTicket(ticketId, core.getInput('desired_status'));
