@@ -4,22 +4,24 @@ class TrelloPMS {
         this.core = core;
     }
 
-    moveTicket(ticketId, desiredStatus)
+    asyncmoveTicket(ticketId, desiredStatus)
     {
         const key = this.core.getInput('trello_app_key');
         const token = this.core.getInput('trello_token');
         const url = `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`;
         console.log(`Ticket URL: ${url}`);
 
-        axios.put(
+        const response = await axios.put(
             `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`, 
-            {
+            JSON.stringify({
                 idList: desiredStatus
-            }).then((response) => {
-                console.log(response);
-            }).catch((error) => {
-            console.log(error);
-        });
+            }),
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
     }
 }
 
