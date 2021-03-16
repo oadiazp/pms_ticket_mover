@@ -6,6 +6,12 @@ class TrelloPMS {
 
     moveTicket(ticketId, desiredStatus)
     {
+        console.log('Trello credentials');
+        console.log({
+            key: this.core.getInput('trello_app_key'),
+            token: this.core.getInput('trello_token')
+        })
+
         axios.put(`https://api.trello.com/1/cards/${ticketId}`, {
             params: {
                 key: this.core.getInput('trello_app_key'),
@@ -42,12 +48,7 @@ const { default: axios } = require('axios');
 
 try {
     const psmManager = PMSFactory.factory(core);
-
-    console.log(`Commit message: ${github.context.payload.head_commit.message}`);
-
     const ticketId = TicketFinder.get(github.context.payload.head_commit.message);
-    console.log(`Ticket: ${ticketId}`);
-    
     psmManager.moveTicket(ticketId, core.getInput('desired_status'));
 }
 catch (error) {
