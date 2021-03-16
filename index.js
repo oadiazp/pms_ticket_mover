@@ -16,9 +16,9 @@ class TrelloPMS {
             headers: {
                 'Content-Type': 'application/json'
             },
-            data: JSON.stringify({
+            data: {
                 idList: desiredStatus
-            })
+            }
         }).
         then((response) => {
             console.log(response);
