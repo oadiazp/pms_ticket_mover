@@ -6,19 +6,16 @@ class TrelloPMS {
 
     moveTicket(ticketId, desiredStatus)
     {
-        console.log('Trello credentials');
-        console.log({
-            key: this.core.getInput('trello_app_key'),
-            token: this.core.getInput('trello_token')
-        })
-
         const key = this.core.getInput('trello_app_key');
         const token = this.core.getInput('trello_token');
 
-        axios.put(`https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`, {
+        axios.put(
+            `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`, {
             data: {
                 idList: desiredStatus
             }
+        }).catch((error) => {
+            console.log(`Error: ${error}`);
         });
     }
 }
