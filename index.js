@@ -16,8 +16,9 @@ class TrelloPMS {
             }
         }).
         then((response) => {
+            const s = JSON.stringify(response);
             console.log(
-                `Response: ${response.status} ${response.statusText}`
+                `Response: ${s}`
             );
         }).
         catch((error) => {
