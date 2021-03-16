@@ -14,7 +14,13 @@ class TrelloPMS {
             data: {
                 idList: desiredStatus
             }
-        }).catch((error) => {
+        }).
+        then((response) => {
+            console.log(
+                `Response: ${response.status} ${response.statusText}`
+            );
+        }).
+        catch((error) => {
             const errorStr = JSON.stringify(error);
             console.log(`Error: ${errorStr}`);
         });
