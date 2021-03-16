@@ -4,7 +4,7 @@ class TrelloPMS {
         this.core = core;
     }
 
-    asyncmoveTicket(ticketId, desiredStatus)
+    async moveTicket(ticketId, desiredStatus)
     {
         const key = this.core.getInput('trello_app_key');
         const token = this.core.getInput('trello_token');
