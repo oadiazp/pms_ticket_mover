@@ -12,13 +12,12 @@ class TrelloPMS {
             token: this.core.getInput('trello_token')
         })
 
-        axios.put(`https://api.trello.com/1/cards/${ticketId}`, {
-            params: {
-                key: this.core.getInput('trello_app_key'),
-                token: this.core.getInput('trello_token')
-            },
+        const key = this.core.getInput('trello_app_key');
+        const token = this.core.getInput('trello_token');
+
+        axios.put(`https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`, {
             data: {
-                idList: this.core.getInput(desiredStatus)
+                idList: desiredStatus
             }
         });
     }
