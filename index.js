@@ -10,7 +10,7 @@ class TrelloPMS {
         const token = this.core.getInput('trello_token');
         const url = `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`;
         console.log(`Ticket URL: ${url}`);
-        
+
         axios.put(
             `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`, {
             data: {
@@ -25,7 +25,8 @@ class TrelloPMS {
         }).
         catch((error) => {
             const errorStr = JSON.stringify(error);
-            console.log(`Error: ${errorStr}`);
+            console.log(error);
+            console.log(`Error: ${error}`);
         });
     }
 }
