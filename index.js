@@ -12,18 +12,12 @@ class TrelloPMS {
         console.log(`Ticket URL: ${url}`);
 
         axios.put(
-            `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: {
+            `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`, 
+            {
                 idList: desiredStatus
-            }
-        }).
-        then((response) => {
-            console.log(response);
-        }).
-        catch((error) => {
+            }).then((response) => {
+                console.log(response);
+            }).catch((error) => {
             console.log(error);
         });
     }
