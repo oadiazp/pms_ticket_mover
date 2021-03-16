@@ -19,7 +19,7 @@ class TrelloPMS {
 }
 
 class TicketFinder {
-    get(message)
+    static get(message)
     {
         return message.split(":")[0];
     }
@@ -43,9 +43,11 @@ const { default: axios } = require('axios');
 try {
     const psmManager = PMSFactory.factory(core);
 
-    console.log(github.context.payload);
+    console.log(`Commit message: ${github.context.payload.head_commit.message}`);
 
     const ticketId = TicketFinder.get(github.context.payload.head_commit.message);
+    console.log(`Ticket: ${ticketId}`);
+    
     psmManager.moveTicket(ticketId, core.getInput('desired_status'));
 }
 catch (error) {
