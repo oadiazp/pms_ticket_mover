@@ -48,9 +48,9 @@ const github = require('@actions/github');
 const { default: axios } = require('axios');
 
 try {
-    const psmManager = PMSFactory.factory(core);
+    const pmsManager = PMSFactory.factory(core);
     const ticketId = TicketFinder.get(github.context.payload.head_commit.message);
-    psmManager.moveTicket(ticketId, core.getInput('desired_status'));
+    pmsManager.moveTicket(ticketId, core.getInput('desired_status'));
 }
 catch (error) {
     core.setFailed(error.message);
