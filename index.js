@@ -48,7 +48,7 @@ class YouTrackPMS {
                     $type: 'SingleEnumIssueCustomField',
                     name: 'State',
                     value: {
-                        name: 'Done'
+                        name: desiredStatus
                     }
                 }
             ]

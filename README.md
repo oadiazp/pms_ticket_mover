@@ -18,3 +18,14 @@ steps:
         trello_token: "${{ secrets.TRELLO_TOKEN }}" # Trello token: https://trello.com/app-key
         trello_app_key: "${{ secrets.TRELLO_APP_KEY }}" # Trello App Key: https://trello.com/app-key
 ```
+To use it with YouTrack
+``` yaml
+steps:
+    - name: move_ticket
+      uses: github.com/oadiazp/pms_ticket_mover@master
+      with:
+        pms: youtrack # The PMS that you want to use
+        desired_status: Done 
+        youtrack_token: "${{ secrets.YOUTRACK_TOKEN }}" # Trello token: https://trello.com/app-key
+        youtrack_base_url: https://<youtrack URL>/youtrack
+```
