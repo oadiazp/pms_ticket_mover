@@ -8,8 +8,6 @@ class TrelloPMS {
     {
         const key = this.core.getInput('trello_app_key');
         const token = this.core.getInput('trello_token');
-        const url = `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`;
-        console.log(`Ticket URL: ${url}`);
 
         const response = await axios.put(
             `https://api.trello.com/1/cards/${ticketId}?key=${key}&token=${token}`, 
@@ -25,6 +23,32 @@ class TrelloPMS {
     }
 }
 
+class YouTrackPMS {
+    constructor(core) {
+        this.core = core;
+    }
+
+    async moveTicket(ticketId, desiredStatus)
+    {
+        import {Youtrack} from "youtrack-rest-client";
+
+        const baseUrl = this.core.getInput('youtrack_base_url')
+        const token = this.core.getInput('youtrack_token')
+
+        const config = {
+            baseUrl: baseUrl,
+            token: `perm:${token}`
+        };
+        const youtrack = new Youtrack(config);
+        const updatedIssue = await youtrack.issues.update({
+            id: ticketId,
+            state: desiredStatus
+        });
+
+        console.log(updatedIssue);
+    }
+}
+
 class TicketFinder {
     static get(message)
     {
@@ -35,8 +59,8 @@ class TicketFinder {
 class PMSFactory {
     static factory(core) 
     {
-        if (core.getInput('pms') === "jira") {
-            return new JiraPMS(core);
+        if (core.getInput('pms') === "youtrack") {
+            return new YouTrackPMS(core);
         }
 
         return new TrelloPMS(core);
