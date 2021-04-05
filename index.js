@@ -30,7 +30,7 @@ class YouTrackPMS {
 
     async moveTicket(ticketId, desiredStatus)
     {
-        import {Youtrack} from "youtrack-rest-client";
+        const Youtrack = require("youtrack-rest-client");
 
         const baseUrl = this.core.getInput('youtrack_base_url')
         const token = this.core.getInput('youtrack_token')
