@@ -40,16 +40,14 @@ class YouTrackPMS {
             token: `perm:${token}`
         };
         const youtrack = new Youtrack(config);
+
         const response = await youtrack.issues.update({
             id: ticketId,
-            customFields: [
-                {
-                    name: 'State',
-                    value: {
-                        name: 'Done'
-                    }
-                }
-            ],
+            $type: 'SingleEnumIssueCustomField',
+            name: 'State',
+            value: {
+                name: 'Done'
+            }
         })
 
         console.log(response);
