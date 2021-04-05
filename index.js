@@ -42,7 +42,7 @@ class YouTrackPMS {
         const youtrack = new Youtrack(config);
         const issue = await youtrack.issues.byId(ticketId);
         const stateCustomFieldId = issue.fields.map((field) => {
-           console.log(field);
+           console.log(field.name);
            console.log('-------------------');
         });
     }
