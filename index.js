@@ -43,12 +43,16 @@ class YouTrackPMS {
 
         const response = await youtrack.issues.update({
             id: ticketId,
-            $type: 'SingleEnumIssueCustomField',
-            name: 'State',
-            value: {
-                name: 'Done'
-            }
-        })
+            customFields: [
+                {
+                    $type: 'SingleEnumIssueCustomField',
+                    name: 'State',
+                    value: {
+                        name: 'Done'
+                    }
+                }
+            ]
+        });
 
         console.log(response);
     }
