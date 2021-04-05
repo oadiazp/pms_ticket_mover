@@ -42,7 +42,12 @@ class YouTrackPMS {
         const youtrack = new Youtrack(config);
         const response = await youtrack.issues.update({
             id: ticketId,
-            summary: 'done',
+            fields: [
+                {
+                    name: 'State',
+                    value: 'Done'
+                }
+            ],
         })
 
         console.log(response);
