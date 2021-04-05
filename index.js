@@ -45,7 +45,9 @@ class YouTrackPMS {
             fields: [
                 {
                     name: 'State',
-                    value: 'Done'
+                    value: {
+                        name: 'Done'
+                    }
                 }
             ],
         })
